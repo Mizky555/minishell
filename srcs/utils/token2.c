@@ -73,7 +73,7 @@ void	token_print(t_token *head)
 		printf("===============\n");
 		printf("token:%s$\n", head->token);
 		printf("type: %d\n", head->type);
-		printf("quote: %d\n", head->quote);
+		//printf("quote: %d\n", head->quote);
 		printf("===============\n");
 		head = head->next;
 	}

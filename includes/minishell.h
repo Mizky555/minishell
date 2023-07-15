@@ -36,5 +36,11 @@ extern char	**environ;
 
 bool	space_spliter(char *line, t_env *env);
 int		lexer(char *line, t_env *env);
+bool    redirect_spliter(t_env *env);
+char *get_alpha(char *token, t_env *env);
+size_t	get_alpha_size(char *token);
+char    *get_redirect(char *token, t_env *env);
+size_t	get_redirect_size(char *token);
+int get_check(char c);
 
 #endif

@@ -23,9 +23,9 @@ void	sig_handler(int signum)
 	}
 }
 
-int	minishell_term(t_env *env)
+int	minishell_term(t_env *env) //ไว้สำหรับทำ env terminal
 {
-	env->term = (t_term *)malloc(sizeof(t_term));
+	env->term = (t_term *)malloc(sizeof(t_term)); //ไว้เก็บ env ของ terminal
 	if (env->term == NULL)
 		return (EXIT_FAILURE);
 	tcgetattr(STDIN_FILENO, &env->term->minishell);
@@ -45,19 +45,19 @@ void	end_minishell(t_env *env)
 	free(env->term);
 }
 
-bool	init_minishell(t_env *env)
+bool	init_minishell(t_env *env) //ถ้าวิ่งได้ 0 วิ่งไม่ได้ 1 หาไม่เจอ 127
 {
-	env->ret = 0;
-	env->exit = 1;
-	env->cmd_counts = 1;
-	env->token = NULL;
-	env->files = NULL;
+	env->ret = 0; //return signal ของแต่ละคอมมาน
+	env->exit = 1; //สำหรับ exit command
+	env->cmd_counts = 1; //นับว่ามี command กี่ตัว
+	env->token = NULL; //ไว้ init pointer เป็น null
+	env->files = NULL; //init pointer
 	env->pipex_cmds = NULL;
 	if (minishell_term(env) == EXIT_FAILURE)
 	{
-		perror("minishell");
+		perror("minishell"); // ถ้ามี error จะ print ใน "" และต่อด้วยที่ error
 		end_minishell(env);
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
 	}
 	env->errorchar = '\0';
 	env->tmp_environ = environ;
@@ -74,66 +74,65 @@ bool	init_minishell(t_env *env)
 
 	env->ret = 0;
 	env->exit = 0;
-	return (EXIT_FAILURE);
+	return (EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
 }
 
-char	*make_prompt(t_env *env)
-{
-	char	*cwd;
-	char	*home;
-	char	*name;
-	char	*tmp;
 
-	cwd = getcwd(NULL, 0);
-	home = getenv("HOME");
-	if (home == NULL)
-		home = "";
-	name = getenv("USER");
-	if (name == NULL)
-		name = "";
-	if (ft_strncmp(cwd, home, ft_strlen(home)) == 0)
-	{
-		tmp = ft_strjoin("~", cwd + ft_strlen(home));
-		free(cwd);
-		cwd = tmp;
-	}
-	name = ft_strjoin_free_n(name, "@minishell: ", 0);
-	cwd = ft_strjoin_free_n(name, cwd, 3);
-	cwd = ft_strjoin_free_n("\033[30;1;7m\033[1;47m ", cwd, 2);
-	cwd = ft_strjoin_free_n(cwd, "\033[0m [", 1);
-	cwd = ft_strjoin_free_n(cwd, ft_itoa(env->ret), 3);
-	cwd = ft_strjoin_free_n(cwd, "]> \0", 1);
-	return (cwd);
-}
-
-void	process_line(char *line, t_env *env)
+int	process_line(char *line, t_env *env)
 {
-	lexer(line, env);
-	token_print(env->token);
+	if (lexer(line, env))
+		return (EXIT_FAILURE); //สร้าง แอควาลอนเม้น
+	// token_print(env->token);
 	// parser(env);
 	// executor(env);
+	return (EXIT_SUCCESS);
 }
 
 int	main(void)
 {
 	t_env	env;
-	char	*prompt;
 	char	*line;
 
-	prompt = NULL;
 	init_minishell(&env);
 	while (true)
 	{
-		prompt = make_prompt(&env);
-		line = readline(prompt);
-		free(prompt);
+		line = readline("miniopal : ");
 		if (line == NULL)
 			break ;
 		add_history(line);
-		process_line(line, &env);
-		free(line);
+		if (!process_line(line, &env))
+			free(line);
 		token_clear(&env.token);
 	}
 	end_minishell(&env);
 	return (env.exit);
 }
+
+// char	*make_prompt(t_env *env)
+// {
+// 	char	*cwd;
+// 	char	*home;
+// 	char	*name;
+// 	char	*tmp;
+
+// 	cwd = getcwd(NULL, 0);
+// 	home = getenv("HOME");
+// 	if (home == NULL)
+// 		home = "";
+// 	name = getenv("USER");
+// 	if (name == NULL)
+// 		name = "";
+// 	if (ft_strncmp(cwd, home, ft_strlen(home)) == 0)
+// 	{
+// 		tmp = ft_strjoin("~", cwd + ft_strlen(home));
+// 		free(cwd);
+// 		cwd = tmp;
+// 	}
+// 	name = ft_strjoin_free_n(name, "@minishell: ", 0);
+// 	cwd = ft_strjoin_free_n(name, cwd, 3);
+// 	cwd = ft_strjoin_free_n("\033[30;1;7m\033[1;47m ", cwd, 2);
+// 	cwd = ft_strjoin_free_n(cwd, "\033[0m [", 1);
+// 	cwd = ft_strjoin_free_n(cwd, ft_itoa(env->ret), 3);
+// 	cwd = ft_strjoin_free_n(cwd, "]> \0", 1);
+// 	return (cwd);
+// }

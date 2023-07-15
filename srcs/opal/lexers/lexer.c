@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell_struct.h"
 #include "minishell.h"
 
 int8_t	perror_exit(char *line, t_env *env)
@@ -23,6 +24,7 @@ int8_t	perror_exit(char *line, t_env *env)
 
 int8_t	error_exit(char *line, t_env *env)
 {
+	printf("line: %s\n", line);
 	token_clear(&env->token);
 	free(line);
 	env->ret = 258;
@@ -33,5 +35,8 @@ int	lexer(char *line, t_env *env)
 {
 	if (space_spliter(line, env))
 		return (error_exit(line, env));
+	redirect_spliter(env);
+	
+	token_print(env->token);
 	return (EXIT_SUCCESS);
 }

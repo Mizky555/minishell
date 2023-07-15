@@ -2,9 +2,9 @@ NAME = minishell
 
 DIR = srcs
 
-INCLUDES = -I $(DIR)/vendors -I $(DIR)/models
+INCLUDES = -Iincludes
 
-CC = cc
+CC = cc 
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address $(INCLUDES)
 
@@ -14,11 +14,16 @@ OBJS = $(SRCS:.c=.o)
 
 RM = rm -f
 
+UNAME = $$(uname)
+ifneq ( ${UNAME}, linux)
+	READLINE_L += -L/opt/homebrew/opt/readline/lib
+	CC += -I/opt/homebrew/opt/readline/include
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lreadline
+	@$(CC) $(CFLAGS) -o $(NAME) $(READLINE_L) $(OBJS) -lreadline
 	@echo "\033[32m[✔] \033[0m\033[1;32mCompilation done !\033[0m"
 
 clean:

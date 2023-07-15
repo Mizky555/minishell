@@ -23,33 +23,32 @@ t_token	*token_new(char *content, int type)
 		return (NULL);
 	new_node->token = content;
 	new_node->type = type;
-	new_node->quote = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
 }
 
-void	token_addback(t_token **lst, t_token *new)
+void	token_addback(t_token **lst, t_token *new) //(หัว,ตัวทื่จะต่อ)
 {
 	t_token	*node;
 
 	if (new == NULL)
 		return ;
-	node = *lst;
-	if (node != NULL)
+	node = *lst; // หัวของlineklist
+	if (node != NULL) // ถ้าตัวแรกไม่มีอะไรเลย จะลงไป else จะกำหนด new ที่รับเข้ามาให้เป็นตัวแรกในlink(หัว)
 	{
 		while (node->next != NULL)
-			node = node->next;
-		node->next = new;
-		new->prev = node;
+			node = node->next;//ขยับจนกว่าจะไปถึงตัวสุดท้าย
+		node->next = new;//ให้ตัวหน้าก่อนชี้ไปตัวใหม่
+		new->prev = node;//ให้ตัวใหม่ชี้ไปตัวก่อนหน้า
 	}
 	else
 		*lst = new;
 }
 
-void	token_addfront(t_token **lst, t_token *new)
+void	token_addfront(t_token **lst, t_token *new) //(หัว,ตัวใหม่ที่จะต่อด้านหน้า)
 {
-	if (*lst && new != NULL)
+	if (*lst != NULL && new != NULL)
 	{
 		new->next = *lst;
 		(*lst)->prev = new;
@@ -78,7 +77,8 @@ int	token_clear(t_token **lst)
 	return (1);
 }
 
-int	token_insert(t_token **head, t_token *new, int index)
+
+int	token_insert(t_token **head, t_token *new, int index) //แทรกlinklist (หัว,ตัวใหม่,ตำแหน่งที่อยากจะแทรก)
 {
 	int		size;
 	t_token	*tmp;
