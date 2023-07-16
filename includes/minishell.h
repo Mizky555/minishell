@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 19:56:29 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 23:28:20 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include	"utils.h"
 # include	"minishell_struct.h"
 # include	"minishell_define.h"
+# include	"process.h"
 
 // std header
 # include	<stdbool.h>
@@ -31,6 +32,11 @@
 # include	<term.h>
 # include	<signal.h>
 # include	<string.h>
+# include	<fcntl.h>
+
+# if __linux__
+#  include	<linux/limits.h>
+# endif
 
 extern char	**environ;
 
@@ -47,5 +53,13 @@ char	*expand_error(t_env *env, char *token, char *pos, char **next_pos);
 char	*expand_brace(char *token, char *pos, char **next_pos);
 int		expand_variable_tokens(t_env *env);
 void	expand_tilde(t_env *env);
-
+int		type_check(t_env *env);
+void	end_minishell(t_env *env);
+char	*read_here_doc(char *limiter);
+char	*get_pathname(char *cmd, char **envp);
+void	close_files(t_io **ios);
+int		open_files(t_io **ios, int type);
+t_io	**add_file(t_io **ios, char *filename, int type, char *limiter);
+void	free_files(t_io **ios);
+char	*get_next_line(int fd);
 #endif

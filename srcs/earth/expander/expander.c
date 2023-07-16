@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:21:49 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 19:25:10 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 23:31:51 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,11 @@ int	expand_variable_tokens(t_env *env)
 			while (pos != NULL)
 			{
 				if (!swap_token(env, current, pos, &next_pos))
-					return (0);
+					return (1);
 				pos = find_next_var(next_pos, &single_open, &double_open);
 			}
 		}
 		current = current->next;
 	}
-	return (1);
+	return (0);
 }
