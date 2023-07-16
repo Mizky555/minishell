@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 08:28:20 by tliangso          #+#    #+#             */
-/*   Updated: 2023/06/12 11:18:10 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:28:00 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	lexer(char *line, t_env *env)
 	if (space_spliter(line, env))
 		return (error_exit(line, env));
 	redirect_spliter(env);
-	
+	expand_variable_tokens(env);
 	token_print(env->token);
 	return (EXIT_SUCCESS);
 }
