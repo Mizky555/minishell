@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 19:27:32 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:56:29 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	*expand_var(char *token, char *pos, char **next_pos);
 char	*expand_error(t_env *env, char *token, char *pos, char **next_pos);
 char	*expand_brace(char *token, char *pos, char **next_pos);
 int		expand_variable_tokens(t_env *env);
+void	expand_tilde(t_env *env);
 
 #endif
