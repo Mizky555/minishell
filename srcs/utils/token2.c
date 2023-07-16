@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 10:38:44 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/31 10:56:31 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 23:34:29 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void	token_print(t_token *head)
 		printf("===============\n");
 		printf("token:%s$\n", head->token);
 		printf("type: %d\n", head->type);
+		printf("prev: %p\n", head->prev);
+		printf("curr: %p\n", head);
+		printf("next: %p\n", head->next);
 		//printf("quote: %d\n", head->quote);
 		printf("===============\n");
 		head = head->next;
