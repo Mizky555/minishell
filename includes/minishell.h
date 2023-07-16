@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/31 10:57:07 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:27:32 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,15 @@ extern char	**environ;
 
 bool	space_spliter(char *line, t_env *env);
 int		lexer(char *line, t_env *env);
-bool    redirect_spliter(t_env *env);
-char *get_alpha(char *token, t_env *env);
+bool	redirect_spliter(t_env *env);
+char	*get_alpha(char *token, t_env *env);
 size_t	get_alpha_size(char *token);
-char    *get_redirect(char *token, t_env *env);
+char	*get_redirect(char *token, t_env *env);
 size_t	get_redirect_size(char *token);
-int get_check(char c);
+int		get_check(char c);
+char	*expand_var(char *token, char *pos, char **next_pos);
+char	*expand_error(t_env *env, char *token, char *pos, char **next_pos);
+char	*expand_brace(char *token, char *pos, char **next_pos);
+int		expand_variable_tokens(t_env *env);
 
 #endif

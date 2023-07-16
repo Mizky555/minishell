@@ -4,9 +4,9 @@ DIR = srcs
 
 INCLUDES = -Iincludes
 
-CC = cc 
+CC = cc -g -fsanitize=address
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address $(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror   $(INCLUDES)
 
 SRCS = $(shell find srcs -name "*.c")
 
@@ -35,5 +35,9 @@ fclean: clean
 	@echo "\033[31m[✔] \033[0m\033[1;31mFclean done !\033[0m"
 
 re: fclean all
+
+norm-init:
+	source .venv/bin/activate
+	norminette
 
 .PHONY: all clean fclean re
