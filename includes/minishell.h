@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 23:28:20 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:23:13 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,7 @@ int		open_files(t_io **ios, int type);
 t_io	**add_file(t_io **ios, char *filename, int type, char *limiter);
 void	free_files(t_io **ios);
 char	*get_next_line(int fd);
+int		run_pipe(t_env *env);
+void	ft_split_free(char **words);
+int		args_exec(t_env *env, t_process **procs);
 #endif

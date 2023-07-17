@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 23:22:32 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 23:24:22 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:21:49 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	**get_path(char **envp)
 	return (NULL);
 }
 
-static void	ft_split_free(char **words)
+void	ft_split_free(char **words)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 08:28:20 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 23:36:17 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:26:00 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,18 @@ int	lexer(char *line, t_env *env)
 {
 	if (space_spliter(line, env))
 		return (error_exit(line, env));
-	printf("space\n");
-	token_print(env->token);
-	printf("\n\n\n");
+	// printf("space\n");
+	// token_print(env->token);
+	// printf("\n\n\n");
 	if (redirect_spliter(env))
 		return (error_exit(line, env));
-	printf("redirect\n");
-	token_print(env->token);
-	printf("\n\n\n");
+	// printf("redirect\n");
+	// token_print(env->token);
+	// printf("\n\n\n");
 	expand_tilde(env);
 	if (expand_variable_tokens(env))
 		return (error_exit(line, env));
-	printf("variable\n");
-	token_print(env->token);
-	printf("\n\n\n");
-	if (type_check(env))
-		return (error_exit(line, env));
-	printf("type\n");
-	token_print(env->token);
+	// printf("variable\n");
+	// token_print(env->token);
 	return (EXIT_SUCCESS);
 }
