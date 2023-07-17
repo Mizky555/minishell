@@ -64,12 +64,14 @@ bool redirect_spliter(t_env *env)
         {
             while (ft_strlen(str) > i)
             {
+                // printf("str = %s i = %zu\n\n",str, i);
                 if (get_check(str[i]) == 1) //alpha
                 {
                     token = token_new(get_alpha(str + i, env), EMPTY);
                 }
                 else //redirect
                 {
+                    // printf("hihihihihi\n");
                     token = token_new(get_redirect(str + i, env), EMPTY);
                 }
                 token_insert(&env->token, token, index++);
@@ -89,12 +91,119 @@ bool redirect_spliter(t_env *env)
             free(del);
         }
         else
+        {
             tmp = tmp->next;
+            index++;
+        }
         // token_print(env->token);
 
     }
     return (0);
 }
+// bool redirect_spliter(t_env *env)
+// {
+//     t_token *tmp; // หัว
+//     t_token *del;
+//     t_token *token;
+//     char *str;
+//     size_t i;
+//     int index;
+
+//     tmp = env->token;
+//     index = 0;
+//     while (tmp)
+//     {
+//         str = tmp->token;
+//         i = 0;
+//         if (check_redirect(str))
+//         {
+//             while (ft_strlen(str) > i)
+//             {
+//                 printf("str = %s i = %zu\n\n",str, i);
+//                 if (get_check(str[i]) == 1) //alpha
+//                 {
+//                     token = token_new(get_alpha(str + i, env), EMPTY);
+//                 }
+//                 else //redirect
+//                 {
+//                     printf("hihihihihi\n");
+//                     token = token_new(get_redirect(str + i, env), EMPTY);
+//                 }
+//                 token_insert(&env->token, token, index++);
+//                 i += ft_strlen(token->token);
+//                 // printf(">>%s\n", token->token);
+//             }
+//             if (tmp->next)
+//             {
+//                 tmp->next->prev = tmp->prev;
+//                 tmp->prev->next = tmp->next;
+//             }
+//             else
+//                 tmp->prev->next = NULL;
+//             del = tmp;
+//             tmp = tmp->next;
+//             free(del->token);
+//             free(del);
+//         }
+//         else
+//             tmp = tmp->next;
+//         // token_print(env->token);
+
+//     }
+//     return (0);
+// }
+// bool redirect_spliter(t_env *env)
+// {
+//     t_token *tmp; // หัว
+//     t_token *del;
+//     t_token *token;
+//     char *str;
+//     size_t i;
+//     int index;
+
+//     tmp = env->token;
+//     index = 0;
+//     while (tmp)
+//     {
+//         str = tmp->token;
+//         i = 0;
+//         if (check_redirect(str))
+//         {
+//             while (ft_strlen(str) > i)
+//             {
+//                 printf("str = %s i = %zu\n\n",str, i);
+//                 if (get_check(str[i]) == 1) //alpha
+//                 {
+//                     token = token_new(get_alpha(str + i, env), EMPTY);
+//                 }
+//                 else //redirect
+//                 {
+//                     printf("hihihihihi\n");
+//                     token = token_new(get_redirect(str + i, env), EMPTY);
+//                 }
+//                 token_insert(&env->token, token, index++);
+//                 i += ft_strlen(token->token);
+//                 // printf(">>%s\n", token->token);
+//             }
+//             if (tmp->next)
+//             {
+//                 tmp->next->prev = tmp->prev;
+//                 tmp->prev->next = tmp->next;
+//             }
+//             else
+//                 tmp->prev->next = NULL;
+//             del = tmp;
+//             tmp = tmp->next;
+//             free(del->token);
+//             free(del);
+//         }
+//         else
+//             tmp = tmp->next;
+//         // token_print(env->token);
+
+//     }
+//     return (0);
+// }
 
 
 int get_check(char c) // เช็คว่าเป็นตัวอักษรไหม

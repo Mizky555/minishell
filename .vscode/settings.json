@@ -3,6 +3,7 @@
         "history.h": "c",
         "minishell.h": "c",
         "minishell_struct.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "__locale": "c"
     }
 }
