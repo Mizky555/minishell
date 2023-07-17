@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:11:59 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/31 21:28:47 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:25:52 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,11 @@ int	process_line(char *line, t_env *env)
 {
 	if (lexer(line, env))
 		return (EXIT_FAILURE); //สร้าง แอควาลอนเม้น
+	// printf("\n\n\n");
+	if (type_check(env))
+		return (error_exit(line, env));
+	// printf("type\n");
 	// token_print(env->token);
-	// parser(env);
-	// executor(env);
 	return (EXIT_SUCCESS);
 }
 
@@ -102,6 +104,7 @@ int	main(void)
 		add_history(line);
 		if (!process_line(line, &env))
 			free(line);
+		env.ret = run_pipe(&env);
 		token_clear(&env.token);
 	}
 	end_minishell(&env);

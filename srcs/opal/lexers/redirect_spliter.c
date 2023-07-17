@@ -271,7 +271,7 @@ char *get_redirect(char *token, t_env *env) // ต่อ1 ทำเก็บต�
     {
         redirect[i] = token[i];
         c = token[i];
-        printf("ssss = %c\n",c);
+        // printf("ssss = %c\n",c);
         i++;
         if (token[i] == c)
         {
