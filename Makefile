@@ -15,10 +15,17 @@ OBJS = $(SRCS:.c=.o)
 RM = rm -f
 
 UNAME = $$(uname)
-ifneq ( ${UNAME}, linux)
-	READLINE_L += -L/opt/homebrew/opt/readline/lib
-	CC += -I/opt/homebrew/opt/readline/include
-endif
+READLINE_L += -L/usr/local/opt/readline/lib
+CC += -I/usr/local/opt/readline/include
+
+READLINE_L += -L/opt/homebrew/opt/readline/lib
+CC += -I/opt/homebrew/opt/readline/include
+
+test:
+	@echo $(UNAME)
+	@echo $$(uname)
+	@echo ${READLINE_L}
+	@echo ${CC}
 
 all: $(NAME)
 
