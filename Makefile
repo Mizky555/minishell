@@ -21,12 +21,6 @@ CC += -I/usr/local/opt/readline/include
 READLINE_L += -L/opt/homebrew/opt/readline/lib
 CC += -I/opt/homebrew/opt/readline/include
 
-test:
-	@echo $(UNAME)
-	@echo $$(uname)
-	@echo ${READLINE_L}
-	@echo ${CC}
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
