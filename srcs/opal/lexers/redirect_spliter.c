@@ -247,11 +247,11 @@ char *get_alpha(char *token, t_env *env)
     }
     alpha[index] = '\0';
     index = 0;
-    while (alpha[index])
-    {
-        printf("%c ",alpha[index++]);
-    }
-    printf("\n");
+    // while (alpha[index])
+    // {
+    //     printf("%c ",alpha[index++]);
+    // }
+    // printf("\n");
     env->token->i_insert++;
     return (alpha);
 }
@@ -329,7 +329,6 @@ size_t get_alpha_size(char *str) // วัดความยาวของ toke
         }
         i++;
     }
-    printf("alpha size = %d\n",i);
     return (i);
 }
 
