@@ -65,4 +65,23 @@ char	*get_next_line(int fd);
 int		run_pipe(t_env *env);
 void	ft_split_free(char **words);
 int		args_exec(t_env *env, t_process **procs);
+int ft_env(void);
+//cd.c
+int ft_cd(char **argv);
+//echo.c
+int ft_echo(char **argv);
+int argv_len(char **argv);
+//ped.c
+int ft_pwd(void);
+//export.c
+int ft_export(t_env *env, char **argv);
+void    add_env(t_env *env, char *argv);
+int check_env(char *environ, char *argv);
+int index_equal(char *str);
+char    **sort_env(void);
+void	print_and_free(char **new_env);
+void    add_new_env(t_env *env, char *argv);
+int len_arr2(char **str);
+int	ft_strcmp(char *s1, char *s2);
+
 #endif

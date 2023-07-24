@@ -28,18 +28,18 @@ int	minishell_term(t_env *env) //ไว้สำหรับทำ env terminal
 	env->term = (t_term *)malloc(sizeof(t_term)); //ไว้เก็บ env ของ terminal
 	if (env->term == NULL)
 		return (EXIT_FAILURE);
-	tcgetattr(STDIN_FILENO, &env->term->minishell);
-	tcgetattr(STDIN_FILENO, &env->term->shell);
+	tcgetattr(STDIN_FILENO, &env->term->minishell);//attr ของเทอร์มินอล 
+	tcgetattr(STDIN_FILENO, &env->term->shell);//เอิ้ดทำ
 	// env->term->minishell.c_lflag &= ~ECHOCTL;
 	// env->term->shell.c_lflag |= ECHOCTL;
-	tcsetattr(STDIN_FILENO, TCSADRAIN, &env->term->minishell);
+	tcsetattr(STDIN_FILENO, TCSADRAIN, &env->term->minishell);//การเปลี่ยนแปลงจเกกิดขึ้นหลังจากการส่ง
 	return (EXIT_SUCCESS);
 }
 
-void	end_minishell(t_env *env)
+void	end_minishell(t_env *env) // เคีลยโปรแกรม
 {
-	rl_clear_history();
-	environ = env->tmp_environ;
+	rl_clear_history(); // เคลียประวัติ cmd ขึ้นลง
+	environ = env->tmp_environ; // 
 	nta_free((void **)env->dup_environ);
 	token_clear(&env->token);
 	free(env->term);
@@ -53,16 +53,16 @@ bool	init_minishell(t_env *env) //ถ้าวิ่งได้ 0 วิ่ง�
 	env->token = NULL; //ไว้ init pointer เป็น null
 	env->files = NULL; //init pointer
 	env->pipex_cmds = NULL;
-	if (minishell_term(env) == EXIT_FAILURE)
+	if (minishell_term(env) == EXIT_FAILURE)//terminfo ข้อมูลของเทอมินอล
 	{
 		perror("minishell"); // ถ้ามี error จะ print ใน "" และต่อด้วยที่ error
 		end_minishell(env);
 		exit(EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
 	}
 	env->errorchar = '\0';
-	env->tmp_environ = environ;
-	env->dup_environ = str_arr2_dup(environ);
-	environ = env->dup_environ;
+	env->tmp_environ = environ; //ต้นฉบับเราจะไม่แก้ไข (ใช้อีกทีตอนจบโปรแกรมเลย)
+	env->dup_environ = str_arr2_dup(environ); //cpy ต้นฉบับ
+	environ = env->dup_environ; // เอาตัว cpy เก็บไว้ในตัวแปรพิเศษ eviron ทำให้สามารถใช้ environ แก้ไขได้
 	env->sigint.sa_handler = sig_handler;
 	sigemptyset(&env->sigint.sa_mask);
 	env->sigint.sa_flags = SA_RESTART;

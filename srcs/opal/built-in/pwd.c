@@ -2,8 +2,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "minishell.h"
 
-int pwds(void)
+int ft_pwd(void)
 {
     char *pwd;
 

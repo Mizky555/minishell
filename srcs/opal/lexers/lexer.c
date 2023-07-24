@@ -24,7 +24,7 @@ int8_t	perror_exit(char *line, t_env *env)
 
 int8_t	error_exit(char *line, t_env *env)
 {
-	printf("line: %s\n", line);
+	// printf("line: %s\n", line);
 	token_clear(&env->token);
 	free(line);
 	env->ret = 258;
@@ -33,6 +33,7 @@ int8_t	error_exit(char *line, t_env *env)
 
 int	lexer(char *line, t_env *env)
 {
+	// printf("environ ====== %d\n", ft_env());
 	if (space_spliter(line, env))
 		return (error_exit(line, env));
 	// printf("space\n");
