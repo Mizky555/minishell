@@ -81,7 +81,7 @@ bool	space_spliter(char *line, t_env *env)
 		if (token == NULL)
 		{
 			if (error == 1)
-				ft_putstr_fd("minishell: parse error\n", 2);
+				ft_putstr_fd("miniopal: parse error\n", 2);
 			return (token_clear(&env->token));
 		}
 		token_addback(&env->token, token);

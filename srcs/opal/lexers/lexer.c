@@ -15,7 +15,7 @@
 
 int8_t	perror_exit(char *line, t_env *env)
 {
-	ft_putstr_fd("minishell: parse error\n", STDERR_FILENO);
+	ft_putstr_fd("miniopal: parse error\n", STDERR_FILENO);
 	token_clear(&env->token);
 	free(line);
 	env->ret = 258;
