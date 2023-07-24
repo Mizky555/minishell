@@ -71,19 +71,16 @@ bool	init_minishell(t_env *env) //ถ้าวิ่งได้ 0 วิ่ง�
 	sigemptyset(&env->sigquit.sa_mask);
 	env->sigquit.sa_flags = SA_RESTART;
 	sigaction(SIGQUIT, &env->sigquit, NULL);
-
-	env->ret = 0;
-	env->exit = 0;
 	return (EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
 }
 
 
-int	process_line(char *line, t_env *env)
+int	process_line(char *line, t_env *env) //
 {
-	if (lexer(line, env))
+	if (lexer(line, env)) //ตัดคำ
 		return (EXIT_FAILURE); //สร้าง แอควาลอนเม้น
 	// printf("\n\n\n");
-	if (type_check(env))
+	if (type_check(env)) //เช็คว่าเป็นอะไร
 		return (error_exit(line, env));
 	// printf("type\n");
 	// token_print(env->token);
@@ -96,19 +93,19 @@ int	main(void)
 	char	*line;
 
 	init_minishell(&env);
-	while (true)
+	while (env.exit)
 	{
 		line = readline("miniopal : ");
-		if (line == NULL)
+		if (line == NULL) //ctrl + d
 			break ;
-		add_history(line);
-		if (!process_line(line, &env))
+		add_history(line);//กดลูกศรขึ้นลงเพื่อดูประวัติ
+		if (!process_line(line, &env))//เอาไปแปรลูกให้ออกมาเป็น linklist ->lexser(แบ่งงตัดออกมาเป็นlink token) + passer(link token มาใส่ type ว่ามันคืออะไร file command บลาๆ) + expander(เอา env ยัด $VAR(envaroment variable)แทนที่ใน token )
 			free(line);
 		env.ret = run_pipe(&env);
 		token_clear(&env.token);
 	}
 	end_minishell(&env);
-	return (env.exit);
+	return (env.ret);
 }
 
 // char	*make_prompt(t_env *env)

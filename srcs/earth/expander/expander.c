@@ -97,7 +97,7 @@ static char	*find_next_var(char *token, int *s_open, int *d_open)
 	return (NULL);
 }
 
-int	expand_variable_tokens(t_env *env)
+int	expand_variable_tokens(t_env *env)//
 {
 	t_token	*current;
 	char	*pos;
@@ -110,7 +110,7 @@ int	expand_variable_tokens(t_env *env)
 	current = env->token;
 	while (current != NULL)
 	{
-		if (is_expandable_variable(current))
+		if (is_expandable_variable(current))//เช็คว่ามี $VAR ไหมที่สามารถขยายออกมาได้
 		{
 			pos = find_next_var(current->token, &single_open, &double_open);
 			while (pos != NULL)

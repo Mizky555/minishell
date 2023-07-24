@@ -83,5 +83,8 @@ void	print_and_free(char **new_env);
 void    add_new_env(t_env *env, char *argv);
 int len_arr2(char **str);
 int	ft_strcmp(char *s1, char *s2);
+//exit.c
+int	ft_exit(t_env *env, char **argv);
+//unset.c
 
 #endif

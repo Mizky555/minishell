@@ -23,8 +23,8 @@ static int	run_builtin_outside(t_env *env, t_process *proc)
 			proc->status = ft_export(env, proc->argv);
 		// else if (ft_strncmp(proc->argv[0], "unset", 6) == 0)
 		// 	proc->status = mini_unset(env, proc->argv);
-		// else if (ft_strncmp(proc->argv[0], "exit", 5) == 0)
-		// 	proc->status = mini_exit(env, proc->argv);
+		else if (ft_strncmp(proc->argv[0], "exit", 5) == 0)
+			proc->status = ft_exit(env, proc->argv);
 	}
 	return (proc->status);
 }

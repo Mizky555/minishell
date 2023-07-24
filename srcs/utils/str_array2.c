@@ -52,7 +52,7 @@ char	**str_arr2_addback(char **words, char *string)
 	return (NULL);
 }
 
-void	str_arr2_delfront(char **words)
+void	str_arr2_delfront(char **words)//ใช้
 {
 	int	i;
 

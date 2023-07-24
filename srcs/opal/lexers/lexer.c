@@ -25,6 +25,7 @@ int8_t	perror_exit(char *line, t_env *env)
 int8_t	error_exit(char *line, t_env *env)
 {
 	// printf("line: %s\n", line);
+	printf("!! Error :3!!\n");
 	token_clear(&env->token);
 	free(line);
 	env->ret = 258;
@@ -33,21 +34,13 @@ int8_t	error_exit(char *line, t_env *env)
 
 int	lexer(char *line, t_env *env)
 {
-	// printf("environ ====== %d\n", ft_env());
 	if (space_spliter(line, env))
 		return (error_exit(line, env));
-	// printf("space\n");
-	// token_print(env->token);
-	// printf("\n\n\n");
 	if (redirect_spliter(env))
 		return (error_exit(line, env));
-	// printf("redirect\n");
-	// token_print(env->token);
-	// printf("\n\n\n");
-	expand_tilde(env);
-	if (expand_variable_tokens(env))
+	expand_tilde(env);//~
+	if (expand_variable_tokens(env))//ค้ลลายๆ redirec ที่โอปอทำ
 		return (error_exit(line, env));
-	// printf("variable\n");
-	// token_print(env->token);
+	//เพิ่ม remove cod
 	return (EXIT_SUCCESS);
 }

@@ -27,7 +27,7 @@ static char	**parse_command(t_env *env, int n)
 			cmd_n++;
 		if (cmd_n == n && (tok->type == CMD || tok->type == ARG))
 			cmd = (char **)nta_add_back((void **)cmd, ft_strdup(tok->token));
-		tok = tok->next;
+		tok = tok->next;//nta_add_back เหมือน str_arr2_addback
 	}
 	return (cmd);
 }
@@ -35,7 +35,7 @@ static char	**parse_command(t_env *env, int n)
 /*
  * parse all io from command n in t_env
  */
-static t_io	**parse_io(t_env *env, int n)
+static t_io	**parse_io(t_env *env, int n)//เอามาอ่านไฟลแล้วเตรียมเขียนหรืออ่าน
 {
 	int		cmd_n;
 	t_token	*tok;
@@ -44,7 +44,7 @@ static t_io	**parse_io(t_env *env, int n)
 	io = NULL;
 	cmd_n = 0;
 	tok = env->token;
-	while (tok != NULL)
+	while (tok != NULL)//วิ่งจนตัวสุดท้าย
 	{
 		if (tok->type == PIPE)
 			cmd_n++;
@@ -85,7 +85,7 @@ static t_process	**build_pipex(t_env *env)
 	n = 0;
 	procs = NULL;
 	cmd = parse_command(env, n);
-	ios = parse_io(env, n);
+	ios = parse_io(env, n); //inout outout (ไฟล < > เข้าหรือออก และ >>,<<)
 	if (cmd == NULL && ios != NULL)
 		cmd = nocmd_special();
 	while (cmd != NULL)

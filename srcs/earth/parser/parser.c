@@ -41,7 +41,7 @@ static int	check_type(t_env *env, t_token *token, int *cmd)
 		token->type = PIPE;
 	}
 	else if (ft_strncmp(token->token, ">>", 2) == 0)
-		token->type |= APPEND;
+		token->type |= APPEND; //0000 0001 = 2
 	else if (ft_strncmp(token->token, "<<", 2) == 0)
 		token->type |= HEREDOC;
 	else if (ft_strncmp(token->token, ">", 1) == 0)
