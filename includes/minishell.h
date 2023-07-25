@@ -86,5 +86,8 @@ int	ft_strcmp(char *s1, char *s2);
 //exit.c
 int	ft_exit(t_env *env, char **argv);
 //unset.c
+int ft_unset(t_env *env, char **argv);
+int    unset_env(t_env *env, char *argv);
+int	env_vs_argv(char *argv, char *env);
 
 #endif
