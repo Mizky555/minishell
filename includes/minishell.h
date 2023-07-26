@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:23:13 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:07:48 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ extern char	**environ;
 
 bool	space_spliter(char *line, t_env *env);
 int		lexer(char *line, t_env *env);
+int		quote_cleaner(t_env *env);
 bool	redirect_spliter(t_env *env);
 char	*get_alpha(char *token, t_env *env);
 size_t	get_alpha_size(char *token);

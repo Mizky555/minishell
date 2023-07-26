@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 08:28:20 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:26:00 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:08:24 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int	lexer(char *line, t_env *env)
 	if (expand_variable_tokens(env))//ค้ลลายๆ redirec ที่โอปอทำ
 		return (error_exit(line, env));
 	//เพิ่ม remove cod
+	if (quote_cleaner(env))
+		return (error_exit(line, env));
 	return (EXIT_SUCCESS);
 }

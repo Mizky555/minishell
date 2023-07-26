@@ -136,11 +136,13 @@ int ft_export(t_env *env, char **argv)
     if (argv[1] == NULL)
         print_and_free(sort_env());
     else
+    {
         while (argv[i])//ถัดไปทีละstr 
         {
             add_env(env, argv[i]);
             i++;
         }
+    }
         return (0);
 }
 // int check_env(t_env *env, char *argv)
