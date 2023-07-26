@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:51:14 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 21:07:53 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:16:29 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 //NULL if the character does not occur in the given memory a
 //The rawmemchr() function returns a pointer to the matching byte,  if  one  is
 //found.  If no matching byte is found, the result is unspecified.
-#include	"libft.h"
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

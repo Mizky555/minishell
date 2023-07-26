@@ -3,45 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/26 17:07:48 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 01:31:39 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-
+# define MINISHELL_H
 // own header
-# include	"libft.h"
-# include	"utils.h"
-# include	"minishell_struct.h"
-# include	"minishell_define.h"
-# include	"process.h"
-
+# include "libft.h"
+# include "utils.h"
+# include "minishell_struct.h"
+# include "minishell_define.h"
+# include "process.h"
 // std header
-# include	<stdbool.h>
-# include	<stdint.h>
-# include	<stdlib.h>
-# include	<stdio.h>
-# include	<sys/wait.h>
-# include	<unistd.h>
-# include	<readline/readline.h>
-# include	<readline/history.h>
-# include	<errno.h>
-# include	<term.h>
-# include	<signal.h>
-# include	<string.h>
-# include	<fcntl.h>
+# include <stdbool.h>
+# include <stdint.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <unistd.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <errno.h>
+# include <term.h>
+# include <signal.h>
+# include <string.h>
+# include <fcntl.h>
 
 # if __linux__
-#  include	<linux/limits.h>
+#  include <linux/limits.h>
 # endif
 
 extern char	**environ;
 
 bool	space_spliter(char *line, t_env *env);
 int		lexer(char *line, t_env *env);
+int		process_line(char *line, t_env *env);
 int		quote_cleaner(t_env *env);
 bool	redirect_spliter(t_env *env);
 char	*get_alpha(char *token, t_env *env);
@@ -66,29 +66,29 @@ char	*get_next_line(int fd);
 int		run_pipe(t_env *env);
 void	ft_split_free(char **words);
 int		args_exec(t_env *env, t_process **procs);
-int ft_env(void);
+int		ft_env(void);
 //cd.c
-int ft_cd(char **argv);
+int		ft_cd(char **argv);
 //echo.c
-int ft_echo(char **argv);
-int argv_len(char **argv);
+int		ft_echo(char **argv);
+int		argv_len(char **argv);
 //ped.c
-int ft_pwd(void);
+int		ft_pwd(void);
 //export.c
-int ft_export(t_env *env, char **argv);
-void    add_env(t_env *env, char *argv);
-int check_env(char *environ, char *argv);
-int index_equal(char *str);
-char    **sort_env(void);
+int		ft_export(t_env *env, char **argv);
+void	add_env(t_env *env, char *argv);
+int		check_env(char *environ, char *argv);
+int		index_equal(char *str);
+char	**sort_env(void);
 void	print_and_free(char **new_env);
-void    add_new_env(t_env *env, char *argv);
-int len_arr2(char **str);
-int	ft_strcmp(char *s1, char *s2);
+void	add_new_env(t_env *env, char *argv);
+int		len_arr2(char **str);
+int		ft_strcmp(char *s1, char *s2);
 //exit.c
-int	ft_exit(t_env *env, char **argv);
+int		ft_exit(t_env *env, char **argv);
 //unset.c
-int ft_unset(t_env *env, char **argv);
-int    unset_env(t_env *env, char *argv);
-int	env_vs_argv(char *argv, char *env);
+int		ft_unset(t_env *env, char **argv);
+int		unset_env(t_env *env, char *argv);
+int		env_vs_argv(char *argv, char *env);
 
 #endif

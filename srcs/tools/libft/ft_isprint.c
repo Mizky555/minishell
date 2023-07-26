@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:43:38 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/10 11:41:32 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:28 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //        the tested class, and zero if not.
 // isprint()
 //        checks for any printable character including space.
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

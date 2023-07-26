@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   qoute_remover.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:06:52 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/26 17:07:13 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:46:13 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

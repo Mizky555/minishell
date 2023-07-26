@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:34:01 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/10 10:53:02 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:23 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //        the tested class, and zero if not.
 // isdigit()
 //        checks for a digit (0 through 9).
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

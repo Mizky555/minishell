@@ -38,7 +38,6 @@ fclean: clean
 re: fclean all
 
 norm-init:
-	source .venv/bin/activate
 	norminette
 
 .PHONY: all clean fclean re

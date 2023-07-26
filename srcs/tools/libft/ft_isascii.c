@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:38:13 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 22:00:36 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:17 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // isascii()
 //        checks whether c is a 7-bit unsigned  char  value  that
 //        fits into the ASCII character set.
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_isascii(int c)
 {

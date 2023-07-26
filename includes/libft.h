@@ -3,30 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:16:47 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/30 21:44:29 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:40:11 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include	<unistd.h>
-# include	<string.h>
-# include	<stdlib.h>
-# include	<stdio.h>
-# include	<limits.h>
-
-# ifndef SIZE_MAX
-/* Limit of `size_t' type.  */
-#  if __WORDSIZE == 64
-#   define SIZE_MAX                (18446744073709551615UL)
-#  else
-#   define SIZE_MAX                (4294967295U)
-#  endif
-# endif
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
+# include <stdint.h>
 
 typedef struct s_list
 {

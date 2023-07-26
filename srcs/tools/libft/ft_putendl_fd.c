@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:59:32 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 22:46:13 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:17:08 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // RETURN VALUE
 // None
-#include	"libft.h"
+#include "libft.h"
 
 static void	putchar_fd(unsigned char c, int fd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:25:22 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 22:13:36 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:17:38 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // On success, the strdup() function returns a pointer to the duplicated string.
 // It returns NULL if insufficient memory was available, with errno set to indi‐
 // cate the cause of the error.
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {

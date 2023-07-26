@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:11:50 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 23:21:39 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:14:50 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // RETURN VALUE
 //        The converted value.
 
-#include	"libft.h"
+#include "libft.h"
 
 #define CUTTOFF 922337203685477580
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:47:11 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 21:16:06 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:14:55 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@
 // cated  memory.   On failure, it returns NULL and the original block of memory
 // is left untouched.
 
-#include	"libft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t nmeb, size_t size)
 {

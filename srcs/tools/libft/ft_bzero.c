@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:52:47 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 23:41:29 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:06 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //
 // RETURN VALUE
 //        None.
-#include	"libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

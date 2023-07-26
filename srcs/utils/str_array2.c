@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_array2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:58:55 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/30 23:03:37 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:04:10 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**str_arr2_addback(char **words, char *string)
 	return (NULL);
 }
 
-void	str_arr2_delfront(char **words)//ใช้
+void	str_arr2_delfront(char **words)
 {
 	int	i;
 

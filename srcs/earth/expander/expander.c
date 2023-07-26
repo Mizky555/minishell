@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:21:49 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 23:31:51 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:45:44 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static char	*find_next_var(char *token, int *s_open, int *d_open)
 	return (NULL);
 }
 
-int	expand_variable_tokens(t_env *env)//
+int	expand_variable_tokens(t_env *env)
 {
 	t_token	*current;
 	char	*pos;
@@ -110,7 +110,7 @@ int	expand_variable_tokens(t_env *env)//
 	current = env->token;
 	while (current != NULL)
 	{
-		if (is_expandable_variable(current))//เช็คว่ามี $VAR ไหมที่สามารถขยายออกมาได้
+		if (is_expandable_variable(current))
 		{
 			pos = find_next_var(current->token, &single_open, &double_open);
 			while (pos != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 10:37:35 by tliangso          #+#    #+#             */
-/*   Updated: 2023/05/31 21:31:13 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:05:14 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,25 @@ t_token	*token_new(char *content, int type)
 	return (new_node);
 }
 
-void	token_addback(t_token **lst, t_token *new) //(หัว,ตัวทื่จะต่อ)
+void	token_addback(t_token **lst, t_token *new)
 {
 	t_token	*node;
 
 	if (new == NULL)
 		return ;
-	node = *lst; // หัวของlineklist
-	if (node != NULL) // ถ้าตัวแรกไม่มีอะไรเลย จะลงไป else จะกำหนด new ที่รับเข้ามาให้เป็นตัวแรกในlink(หัว)
+	node = *lst;
+	if (node != NULL)
 	{
 		while (node->next != NULL)
-			node = node->next;//ขยับจนกว่าจะไปถึงตัวสุดท้าย
-		node->next = new;//ให้ตัวหน้าก่อนชี้ไปตัวใหม่
-		new->prev = node;//ให้ตัวใหม่ชี้ไปตัวก่อนหน้า
+			node = node->next;
+		node->next = new;
+		new->prev = node;
 	}
 	else
 		*lst = new;
 }
 
-void	token_addfront(t_token **lst, t_token *new) //(หัว,ตัวใหม่ที่จะต่อด้านหน้า)
+void	token_addfront(t_token **lst, t_token *new)
 {
 	if (*lst != NULL && new != NULL)
 	{
@@ -77,8 +77,7 @@ int	token_clear(t_token **lst)
 	return (1);
 }
 
-
-int	token_insert(t_token **head, t_token *new, int index) //แทรกlinklist (หัว,ตัวใหม่,ตำแหน่งที่อยากจะแทรก)
+int	token_insert(t_token **head, t_token *new, int index)
 {
 	int		size;
 	t_token	*tmp;
