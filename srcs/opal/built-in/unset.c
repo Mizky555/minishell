@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 23:56:46 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/07/26 23:57:00 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 20:39:45 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	unset_env(t_env *env, char *argv)
 		ft_putstr_fd(": invalid parameter name\n", 2);
 		return (1);
 	}
-	while (environ[i])
+	while (env->environ[i])
 	{
-		if (env_vs_argv(argv, environ[i]))
+		if (env_vs_argv(argv, env->environ[i]))
 		{
 			str_arr2_delfront(&env->dup_environ[i]);
-			environ = env->dup_environ;
+			env->environ = env->dup_environ;
 			return (0);
 		}
 		i++;

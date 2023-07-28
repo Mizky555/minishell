@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/27 01:31:39 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 21:12:46 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@
 #  include <linux/limits.h>
 # endif
 
-extern char	**environ;
-
 bool	space_spliter(char *line, t_env *env);
 int		lexer(char *line, t_env *env);
 int		process_line(char *line, t_env *env);
@@ -49,9 +47,9 @@ size_t	get_alpha_size(char *token);
 char	*get_redirect(char *token, t_env *env);
 size_t	get_redirect_size(char *token);
 int		get_check(char c);
-char	*expand_var(char *token, char *pos, char **next_pos);
+char	*expand_var(char *token, char *pos, char **next_pos, t_env *envt);
 char	*expand_error(t_env *env, char *token, char *pos, char **next_pos);
-char	*expand_brace(char *token, char *pos, char **next_pos);
+char	*expand_brace(char *token, char *pos, char **next_pos, t_env *envt);
 int		expand_variable_tokens(t_env *env);
 void	expand_tilde(t_env *env);
 int		type_check(t_env *env);
@@ -66,7 +64,8 @@ char	*get_next_line(int fd);
 int		run_pipe(t_env *env);
 void	ft_split_free(char **words);
 int		args_exec(t_env *env, t_process **procs);
-int		ft_env(void);
+int		ft_env(char **environ);
+char	*get_env(char *name, t_env *env);
 //cd.c
 int		ft_cd(char **argv);
 //echo.c
@@ -79,7 +78,7 @@ int		ft_export(t_env *env, char **argv);
 void	add_env(t_env *env, char *argv);
 int		check_env(char *environ, char *argv);
 int		index_equal(char *str);
-char	**sort_env(void);
+char	**sort_env(t_env *env);
 void	print_and_free(char **new_env);
 void	add_new_env(t_env *env, char *argv);
 int		len_arr2(char **str);

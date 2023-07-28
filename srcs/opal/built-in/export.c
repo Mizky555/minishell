@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 23:54:39 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/07/27 00:29:57 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 20:39:18 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char	**sort_env(void)
+char	**sort_env(t_env *env)
 {
 	char	**new_env;
 	char	*tmp;
@@ -23,11 +23,11 @@ char	**sort_env(void)
 	int		j;
 
 	i = 0;
-	new_env = str_arr2_dup(environ);
-	while (i < len_arr2(environ))
+	new_env = str_arr2_dup(env->environ);
+	while (i < len_arr2(env->environ))
 	{
 		j = i + 1;
-		while (j < len_arr2(environ))
+		while (j < len_arr2(env->environ))
 		{
 			if (ft_strcmp(new_env[i], new_env[j]) > 0)
 			{
@@ -45,7 +45,7 @@ char	**sort_env(void)
 void	add_new_env(t_env *env, char *argv)
 {
 	env->dup_environ = str_arr2_addback(env->dup_environ, argv);
-	environ = env->dup_environ;
+	env->environ = env->dup_environ;
 }
 
 int	check_env(char *environ, char *argv)
@@ -73,12 +73,12 @@ void	add_env(t_env *env, char *argv)
 	int	i;
 
 	i = 0;
-	while (environ[i])
+	while (env->environ[i])
 	{
-		if (check_env(environ[i], argv) == 0)
+		if (check_env(env->environ[i], argv) == 0)
 		{
-			free(environ[i]);
-			environ[i] = ft_strdup(argv);
+			free(env->environ[i]);
+			env->environ[i] = ft_strdup(argv);
 			return ;
 		}
 		i++;
@@ -93,7 +93,7 @@ int	ft_export(t_env *env, char **argv)
 
 	i = 1;
 	if (argv[1] == NULL)
-		print_and_free(sort_env());
+		print_and_free(sort_env(env));
 	else
 	{
 		while (argv[i])

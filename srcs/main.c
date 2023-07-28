@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:11:59 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/27 00:31:56 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 20:36:47 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	minishell_term(t_env *env)
 void	end_minishell(t_env *env)
 {
 	rl_clear_history();
-	environ = env->tmp_environ;
+	env->environ = env->tmp_environ;
 	nta_free((void **)env->dup_environ);
 	token_clear(&env->token);
 	free(env->term);
@@ -58,9 +58,9 @@ bool	init_minishell(t_env *env)
 		exit(EXIT_FAILURE);
 	}
 	env->errorchar = '\0';
-	env->tmp_environ = environ;
-	env->dup_environ = str_arr2_dup(environ);
-	environ = env->dup_environ;
+	env->tmp_environ = env->environ;
+	env->dup_environ = str_arr2_dup(env->environ);
+	env->environ = env->dup_environ;
 	env->sigint.sa_handler = sig_handler;
 	sigemptyset(&env->sigint.sa_mask);
 	env->sigint.sa_flags = SA_RESTART;
@@ -72,11 +72,14 @@ bool	init_minishell(t_env *env)
 	return (EXIT_FAILURE);
 }
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	t_env	env;
 	char	*line;
 
+	(void)argc;
+	(void)argv;
+	env.environ = envp;
 	init_minishell(&env);
 	while (env.exit)
 	{

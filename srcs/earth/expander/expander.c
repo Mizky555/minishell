@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:21:49 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/26 23:45:44 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 21:05:57 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static char	*expand_token(t_env *env, char *token, char *pos, char **next_pos)
 	else if (ft_strncmp("$?", pos, 2) == 0)
 		expand = expand_error(env, token, pos, next_pos);
 	else if (ft_strncmp("${", pos, 2) == 0)
-		expand = expand_brace(token, pos, next_pos);
+		expand = expand_brace(token, pos, next_pos, env);
 	else
-		expand = expand_var(token, pos, next_pos);
+		expand = expand_var(token, pos, next_pos, env);
 	if (expand == NULL)
 		*next_pos = pos + 1;
 	return (expand);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_executor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:17:54 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/26 23:44:47 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/28 20:40:33 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static t_process	**build_pipex(t_env *env)
 		cmd = nocmd_special();
 	while (cmd != NULL)
 	{
-		procs = add_proc(procs, cmd, environ);
+		procs = add_proc(procs, cmd, env->environ);
 		nta_free((void **)cmd);
 		procs[n]->io = ios;
 		n++;

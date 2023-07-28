@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:15:34 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:24:56 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/28 20:46:31 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	run_builtin_inside(t_process *proc)
 	else if (ft_strncmp(proc->argv[0], "pwd", 4) == 0)
 		proc->status = ft_pwd();
 	else if (ft_strncmp(proc->argv[0], "env", 4) == 0)
-		proc->status = ft_env();
+		proc->status = ft_env(proc->envp);
 	return (proc->status);
 }
 
