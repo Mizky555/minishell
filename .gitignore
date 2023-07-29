@@ -1,5 +1,0 @@
-*.o
-minishell
-poetry.lock
-pyproject.toml
-.vscode
