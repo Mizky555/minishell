@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 23:46:48 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/07/26 23:47:10 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/29 22:38:05 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_cd(char **argv)
 {
 	int	value;
 
-	if (argv[1] == NULL)
+	if (argv[0] == NULL)
 		value = chdir(getenv("HOME"));
 	else
-		value = chdir(argv[1]);
+		value = chdir(argv[0]);
 	if (value != 0)
 	{
 		ft_putstr_fd("error", STDERR_FILENO);
