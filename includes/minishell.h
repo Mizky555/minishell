@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:02:11 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/28 21:12:46 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/29 21:08:20 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_split_free(char **words);
 int		args_exec(t_env *env, t_process **procs);
 int		ft_env(char **environ);
 char	*get_env(char *name, t_env *env);
+int		check_quote(t_token *tok);
 //cd.c
 int		ft_cd(char **argv);
 //echo.c
