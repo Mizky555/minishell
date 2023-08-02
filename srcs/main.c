@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:11:59 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/28 20:36:47 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:24:06 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	minishell_term(t_env *env)
 void	end_minishell(t_env *env)
 {
 	rl_clear_history();
-	env->environ = env->tmp_environ;
 	nta_free((void **)env->dup_environ);
 	token_clear(&env->token);
 	free(env->term);
@@ -47,7 +46,6 @@ bool	init_minishell(t_env *env)
 {
 	env->ret = 0;
 	env->exit = 1;
-	env->cmd_counts = 1;
 	env->token = NULL;
 	env->files = NULL;
 	env->pipex_cmds = NULL;
@@ -58,7 +56,6 @@ bool	init_minishell(t_env *env)
 		exit(EXIT_FAILURE);
 	}
 	env->errorchar = '\0';
-	env->tmp_environ = env->environ;
 	env->dup_environ = str_arr2_dup(env->environ);
 	env->environ = env->dup_environ;
 	env->sigint.sa_handler = sig_handler;

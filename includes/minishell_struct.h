@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:29:52 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/28 20:35:53 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:50:16 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_env
 	char				***files;
 	int					ret;
 	int					exit;
-	int					cmd_counts;
 	char				**tmp_environ;
 	char				**dup_environ;
 	t_term				*term;

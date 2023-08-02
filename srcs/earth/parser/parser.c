@@ -6,7 +6,7 @@
 /*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 21:43:21 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/26 23:45:13 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/07/30 20:50:06 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	check_type(t_env *env, t_token *token, int *cmd)
 	if (ft_strncmp(token->token, "|", 1) == 0)
 	{
 		*cmd = 0;
-		env->cmd_counts++;
 		token->type = PIPE;
 	}
 	else if (ft_strncmp(token->token, ">>", 2) == 0)
