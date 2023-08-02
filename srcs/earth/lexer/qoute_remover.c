@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:06:52 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/29 21:32:16 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:58:26 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@ static int	remove_quote(t_token *tok)
 	i = -1;
 	is_quoted = 0;
 	newtoken = ft_calloc(ft_strlen(tok->token) + 1, sizeof(char));
+	if (!newtoken)
+		return (1);
 	while (++i < (int)ft_strlen(tok->token))
 	{
-		if (tok->token[i] == '\'' || tok->token[i] == '\"')
+		if ((tok->token[i] == '\'' || tok->token[i] == '\"') 
+			&& (is_quoted == tok->token[i] || is_quoted == 0))
 		{
-			if (is_quoted && (tok->token[i] == tok->token[i - 1]))
+			if (is_quoted && (is_quoted == tok->token[i]))
 				is_quoted = 0;
-			else
-				is_quoted = 1;
+			else if (is_quoted == 0)
+				is_quoted = tok->token[i];
 		}
 		else
 			newtoken[new_i++] = tok->token[i];
 	}
-	free(tok->token);
-	tok->token = newtoken;
-	return (!is_quoted);
+	return (free(tok->token), tok->token = newtoken, !is_quoted);
 }
 
 int	check_quote(t_token *tok)
