@@ -89,8 +89,8 @@ srcs/tools/libft/ft_putnbr_fd.c \
 srcs/tools/libft/ft_calloc.c \
 srcs/tools/libft/ft_strmapi.c \
 srcs/tools/libft/ft_lstlast.c \
-srcs/tools/libft/ft_isalpha.c
-
+srcs/tools/libft/ft_isalpha.c \
+srcs/earth/executor/signal.c
 OBJS = $(SRCS:.c=.o)
 
 RM = rm -f

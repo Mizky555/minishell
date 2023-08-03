@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:15:34 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/28 20:46:31 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:21:13 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static pid_t	fork_exec(t_env *env, t_process *proc)
 		echo = (char **)nta_add_back(NULL, (void *)ft_strdup("echo"));
 		echo = (char **)nta_add_back((void **)echo, (void *)ft_strdup("-n"));
 		proc->status = ft_echo(echo);
-		nta_free((void **)echo);
-		return (proc->pid);
+		return (nta_free((void **)echo), proc->pid);
 	}
 	proc->pid = fork();
 	if (proc->pid == 0)
 	{
+		handle_signal(env);
 		if (proc->parent[0] != 0)
 			dup2(proc->parent[0], 0);
 		if (proc->child[1] != 1)
