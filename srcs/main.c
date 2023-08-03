@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
+/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:11:59 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/31 22:24:06 by thanapornsi      ###   ########.fr       */
+/*   Updated: 2023/08/03 11:30:58 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	sig_handler(int signum)
-{
-	if (signum == SIGINT)
-	{
-		ft_putstr_fd("\n", STDOUT_FILENO);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-}
 
 int	minishell_term(t_env *env)
 {
@@ -58,14 +47,7 @@ bool	init_minishell(t_env *env)
 	env->errorchar = '\0';
 	env->dup_environ = str_arr2_dup(env->environ);
 	env->environ = env->dup_environ;
-	env->sigint.sa_handler = sig_handler;
-	sigemptyset(&env->sigint.sa_mask);
-	env->sigint.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &env->sigint, NULL);
-	env->sigquit.sa_handler = SIG_IGN;
-	sigemptyset(&env->sigquit.sa_mask);
-	env->sigquit.sa_flags = SA_RESTART;
-	sigaction(SIGQUIT, &env->sigquit, NULL);
+	init_signal(env);
 	return (EXIT_FAILURE);
 }
 
@@ -88,6 +70,7 @@ int	main(int argc, char **argv, char **envp)
 			free(line);
 		env.ret = run_pipe(&env);
 		token_clear(&env.token);
+		init_signal(&env);
 	}
 	end_minishell(&env);
 	return (env.ret);
