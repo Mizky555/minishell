@@ -6,12 +6,11 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 23:54:16 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/08/05 13:19:01 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:21:08 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 static int	ft_exit_numric(char **argv)
 {
