@@ -101,14 +101,21 @@ CC += -I/usr/local/opt/readline/include
 READLINE_L += -L/opt/homebrew/opt/readline/lib
 CC += -I/opt/homebrew/opt/readline/include
 
+DEPEND = $(SRCS:.c=.d)
+
 all: $(NAME)
+
+%.o : %.c
+	$(CC) -c $(CFLAGS) -MMD -MP $< -o $@
+
+-include $(DEPEND)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(READLINE_L) $(OBJS) -lreadline
 	@echo "\033[32m[✔] \033[0m\033[1;32mCompilation done !\033[0m"
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(DEPEND)
 	@echo "\033[31m[✔] \033[0m\033[1;31mClean done !\033[0m"
 
 fclean: clean
