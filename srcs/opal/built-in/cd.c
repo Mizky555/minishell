@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 23:46:48 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/07/29 22:38:05 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/08/05 11:53:33 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 int	ft_cd(char **argv)
 {
-	int	value;
+	int		value;
+	char	*error;
 
 	if (argv[0] == NULL)
 		value = chdir(getenv("HOME"));
@@ -25,7 +26,12 @@ int	ft_cd(char **argv)
 		value = chdir(argv[0]);
 	if (value != 0)
 	{
-		ft_putstr_fd("error", STDERR_FILENO);
+		error = strerror(errno);
+		ft_putstr_fd("cd: ", STDERR_FILENO);
+		ft_putstr_fd(error, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(argv[0], STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 		return (1);
 	}
 	return (0);
