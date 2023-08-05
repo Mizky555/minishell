@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 11:21:35 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 22:46:27 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:56 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 //    The substring.
 //    NULL if the allocation fails.
 
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

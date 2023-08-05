@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 21:43:21 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 21:44:02 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:50:06 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ static int	check_type(t_env *env, t_token *token, int *cmd)
 	if (ft_strncmp(token->token, "|", 1) == 0)
 	{
 		*cmd = 0;
-		env->cmd_counts++;
 		token->type = PIPE;
 	}
 	else if (ft_strncmp(token->token, ">>", 2) == 0)
-		token->type |= APPEND; //0000 0001 = 2
+		token->type |= APPEND;
 	else if (ft_strncmp(token->token, "<<", 2) == 0)
 		token->type |= HEREDOC;
 	else if (ft_strncmp(token->token, ">", 1) == 0)

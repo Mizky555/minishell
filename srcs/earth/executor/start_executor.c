@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:17:54 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:18:11 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/28 20:40:33 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,12 @@ static char	**parse_command(t_env *env, int n)
 			cmd_n++;
 		if (cmd_n == n && (tok->type == CMD || tok->type == ARG))
 			cmd = (char **)nta_add_back((void **)cmd, ft_strdup(tok->token));
-		tok = tok->next;//nta_add_back เหมือน str_arr2_addback
+		tok = tok->next;
 	}
 	return (cmd);
 }
 
-/*
- * parse all io from command n in t_env
- */
-static t_io	**parse_io(t_env *env, int n)//เอามาอ่านไฟลแล้วเตรียมเขียนหรืออ่าน
+static t_io	**parse_io(t_env *env, int n)
 {
 	int		cmd_n;
 	t_token	*tok;
@@ -44,7 +41,7 @@ static t_io	**parse_io(t_env *env, int n)//เอามาอ่านไฟล�
 	io = NULL;
 	cmd_n = 0;
 	tok = env->token;
-	while (tok != NULL)//วิ่งจนตัวสุดท้าย
+	while (tok != NULL)
 	{
 		if (tok->type == PIPE)
 			cmd_n++;
@@ -63,9 +60,6 @@ static t_io	**parse_io(t_env *env, int n)//เอามาอ่านไฟล�
 	return (io);
 }
 
-/*
- * special case if pipe has io but no commands
- */
 static char	**nocmd_special(void)
 {
 	char		**echo;
@@ -85,12 +79,12 @@ static t_process	**build_pipex(t_env *env)
 	n = 0;
 	procs = NULL;
 	cmd = parse_command(env, n);
-	ios = parse_io(env, n); //inout outout (ไฟล < > เข้าหรือออก และ >>,<<)
+	ios = parse_io(env, n);
 	if (cmd == NULL && ios != NULL)
 		cmd = nocmd_special();
 	while (cmd != NULL)
 	{
-		procs = add_proc(procs, cmd, environ);
+		procs = add_proc(procs, cmd, env->environ);
 		nta_free((void **)cmd);
 		procs[n]->io = ios;
 		n++;

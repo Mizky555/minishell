@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:01:56 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 20:05:51 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:16:05 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // RETURN VALUE
 // Last node of the list
 
-#include	"libft.h"
+#include "libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {

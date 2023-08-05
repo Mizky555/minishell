@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:55:26 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 09:19:55 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:16:34 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //ence between the first pair of bytes (interpreted as unsigned char) that dif‐
 //fer in s1 an
 //If n is zero, the return value is zero.
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

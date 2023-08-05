@@ -1,55 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 23:47:35 by thanapornsi       #+#    #+#             */
-/*   Updated: 2023/07/26 23:51:45 by thanapornsi      ###   ########.fr       */
+/*   Created: 2023/07/27 00:25:35 by thanapornsi       #+#    #+#             */
+/*   Updated: 2023/07/27 00:26:21 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "minishell.h"
 
-int	argv_len(char **argv)
+int	index_equal(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (argv[i])
+	while (str[i] != '=' && str[i] != '\0')
+	{
 		i++;
+	}
 	return (i);
 }
 
-int	ft_echo(char **argv)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	c;
-	int	i;
-	int	space;
+	size_t	i;
 
-	c = 0;
-	i = 1;
-	space = 0;
-	if (argv_len(argv) >= 2)
+	i = 0;
+	while ((*(s1 + i) || *(s2 + i)))
 	{
-		if (argv[1][0] == '-' && argv[1][1] == 'n' && argv[1][2] == '\0')
-			c = 1;
-		if (c == 1)
-			i = 2;
-		while (argv[i])
-		{
-			if (space == 0)
-				space = 1;
-			else
-				printf(" ");
-			printf("%s", argv[i++]);
-		}
+		if (*(s1 + i) != *(s2 + i))
+			return (*(s1 + i) - *((s2 + i)));
+		i++;
 	}
-	if (c == 0)
-		printf("\n");
 	return (0);
+}
+
+int	len_arr2(char **str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len])
+	{
+		len++;
+	}
+	return (len);
+}
+
+void	print_and_free(char **new_env)
+{
+	int	i;
+
+	i = 0;
+	while (new_env[i])
+	{
+		printf("%s\n", new_env[i]);
+		free(new_env[i]);
+		i++;
+	}
+	free(new_env);
 }

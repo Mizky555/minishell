@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:32:39 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 23:12:01 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:17:57 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 //   means that either size is incorrect or that dst  is  not  a  proper
 //   ''C'' string). The  check  exists  to  prevent  potential  security
 //   problems in incorrect code.
-#include	"libft.h"
+#include "libft.h"
 
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {

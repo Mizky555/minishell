@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:46:43 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 21:06:57 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:09 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // RETURN VALUE
 //        The strlen() function returns  the  number  of  bytes  in  the
 //        string pointed to by s.
-#include	"libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

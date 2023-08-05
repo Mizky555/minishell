@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 10:13:40 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 23:21:52 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:34 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //    The string representing the integer.
 //    NULL if the allocation fails.
 
-#include	"libft.h"
+#include "libft.h"
 
 static size_t	numlen(long nb)
 {

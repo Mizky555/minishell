@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:02:12 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 21:10:14 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:36 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 //   If	little is an empty string, big is returned; if little occurs nowhere
 //   in	big, NULL is returned; otherwise a pointer to the first	character of
 //   the first occurrence of little is returned.
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_strnstr(char *haystack, char *needle, size_t len)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:53:47 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 20:00:38 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:16:23 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // RETURN VALUE
 // The length of the list
 
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

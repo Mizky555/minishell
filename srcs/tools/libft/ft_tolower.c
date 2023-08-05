@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:40:40 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/10 11:07:32 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:19:02 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 // RETURN VALUE
 //        The  value  returned  is that of the converted letter, or c if
 //        the conversion was not possible.
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_tolower(int c)
 {

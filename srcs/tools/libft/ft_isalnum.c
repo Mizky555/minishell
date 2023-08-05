@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:36:45 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/10 10:52:52 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:12 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // isalnum()
 //        checks  for an alphanumeric character; it is equivalent
 //        to (isalpha(c) || isdigit(c)).
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {

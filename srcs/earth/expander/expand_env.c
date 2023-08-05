@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:20:05 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 19:22:12 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/28 21:03:33 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,25 @@ static int	is_valid_brace(char *pos)
 ** Get an env var with a start and end string pointer.
 ** pos is the first char in the name. end is after the last char.
 */
-static char	*get_env_variable(char *pos, char *end)
+static char	*get_env_variable(char *pos, char *end, t_env *envt)
 {
 	char	*env;
 	char	old;
 
 	old = *end;
 	*end = '\0';
-	env = getenv (pos);
+	env = get_env(pos, envt);
 	*end = old;
 	return (env);
 }
 
 static char	*bad_sub_error(void)
 {
-	ft_putstr_fd("minishell: bad substitution\n", 2);
+	ft_putstr_fd("miniopal: bad substitution\n", 2);
 	return (NULL);
 }
 
-char	*expand_brace(char *token, char *pos, char **next_pos)
+char	*expand_brace(char *token, char *pos, char **next_pos, t_env *envt)
 {
 	char	*expand;
 	char	zero;
@@ -61,7 +61,7 @@ char	*expand_brace(char *token, char *pos, char **next_pos)
 	if (!is_valid_brace(pos + 2))
 		return (bad_sub_error());
 	end = ft_strchr(pos, '}');
-	env = get_env_variable(pos + 2, end);
+	env = get_env_variable(pos + 2, end, envt);
 	if (env == NULL)
 		env = &zero;
 	size = ft_strlen(token) + ft_strlen(env) + 1;
@@ -76,7 +76,7 @@ char	*expand_brace(char *token, char *pos, char **next_pos)
 	return (expand);
 }
 
-char	*expand_var(char *token, char *pos, char **next_pos)
+char	*expand_var(char *token, char *pos, char **next_pos, t_env *envt)
 {
 	char	*expand;
 	char	zero;
@@ -90,7 +90,7 @@ char	*expand_var(char *token, char *pos, char **next_pos)
 	end = pos + 1;
 	while ((ft_isalnum(*end) || *end == '_') && *end != '\0')
 		end++;
-	env = get_env_variable(pos + 1, end);
+	env = get_env_variable(pos + 1, end, envt);
 	if (env == NULL)
 		env = &zero;
 	size = ft_strlen(token) + ft_strlen(env) + 1;

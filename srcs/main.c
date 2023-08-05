@@ -6,133 +6,72 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:11:59 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:25:52 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:30:58 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sig_handler(int signum)
+int	minishell_term(t_env *env)
 {
-	if (signum == SIGINT)
-	{
-		ft_putstr_fd("\n", STDOUT_FILENO);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-}
-
-int	minishell_term(t_env *env) //ไว้สำหรับทำ env terminal
-{
-	env->term = (t_term *)malloc(sizeof(t_term)); //ไว้เก็บ env ของ terminal
+	env->term = (t_term *)malloc(sizeof(t_term));
 	if (env->term == NULL)
 		return (EXIT_FAILURE);
-	tcgetattr(STDIN_FILENO, &env->term->minishell);//attr ของเทอร์มินอล 
-	tcgetattr(STDIN_FILENO, &env->term->shell);//เอิ้ดทำ
-	// env->term->minishell.c_lflag &= ~ECHOCTL;
-	// env->term->shell.c_lflag |= ECHOCTL;
-	tcsetattr(STDIN_FILENO, TCSADRAIN, &env->term->minishell);//การเปลี่ยนแปลงจเกกิดขึ้นหลังจากการส่ง
+	tcgetattr(STDIN_FILENO, &env->term->minishell);
+	tcgetattr(STDIN_FILENO, &env->term->shell);
+	tcsetattr(STDIN_FILENO, TCSADRAIN, &env->term->minishell);
 	return (EXIT_SUCCESS);
 }
 
-void	end_minishell(t_env *env) // เคีลยโปรแกรม
+void	end_minishell(t_env *env)
 {
-	rl_clear_history(); // เคลียประวัติ cmd ขึ้นลง
-	environ = env->tmp_environ; // 
+	rl_clear_history();
 	nta_free((void **)env->dup_environ);
 	token_clear(&env->token);
 	free(env->term);
 }
 
-bool	init_minishell(t_env *env) //ถ้าวิ่งได้ 0 วิ่งไม่ได้ 1 หาไม่เจอ 127
+bool	init_minishell(t_env *env)
 {
-	env->ret = 0; //return signal ของแต่ละคอมมาน
-	env->exit = 1; //สำหรับ exit command
-	env->cmd_counts = 1; //นับว่ามี command กี่ตัว
-	env->token = NULL; //ไว้ init pointer เป็น null
-	env->files = NULL; //init pointer
+	env->ret = 0;
+	env->exit = 1;
+	env->token = NULL;
+	env->files = NULL;
 	env->pipex_cmds = NULL;
-	if (minishell_term(env) == EXIT_FAILURE)//terminfo ข้อมูลของเทอมินอล
+	if (minishell_term(env) == EXIT_FAILURE)
 	{
-		perror("minishell"); // ถ้ามี error จะ print ใน "" และต่อด้วยที่ error
+		perror("minishell");
 		end_minishell(env);
-		exit(EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
+		exit(EXIT_FAILURE);
 	}
 	env->errorchar = '\0';
-	env->tmp_environ = environ; //ต้นฉบับเราจะไม่แก้ไข (ใช้อีกทีตอนจบโปรแกรมเลย)
-	env->dup_environ = str_arr2_dup(environ); //cpy ต้นฉบับ
-	environ = env->dup_environ; // เอาตัว cpy เก็บไว้ในตัวแปรพิเศษ eviron ทำให้สามารถใช้ environ แก้ไขได้
-	env->sigint.sa_handler = sig_handler;
-	sigemptyset(&env->sigint.sa_mask);
-	env->sigint.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &env->sigint, NULL);
-	env->sigquit.sa_handler = SIG_IGN;
-	sigemptyset(&env->sigquit.sa_mask);
-	env->sigquit.sa_flags = SA_RESTART;
-	sigaction(SIGQUIT, &env->sigquit, NULL);
-	return (EXIT_FAILURE); //คืนค่าที่ไม่เท่ากับ 0
+	env->dup_environ = str_arr2_dup(env->environ);
+	env->environ = env->dup_environ;
+	init_signal(env);
+	return (EXIT_FAILURE);
 }
 
-
-int	process_line(char *line, t_env *env) //
-{
-	if (lexer(line, env)) //ตัดคำ
-		return (EXIT_FAILURE); //สร้าง แอควาลอนเม้น
-	// printf("\n\n\n");
-	if (type_check(env)) //เช็คว่าเป็นอะไร
-		return (error_exit(line, env));
-	// printf("type\n");
-	// token_print(env->token);
-	return (EXIT_SUCCESS);
-}
-
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	t_env	env;
 	char	*line;
 
+	(void)argc;
+	(void)argv;
+	env.environ = envp;
 	init_minishell(&env);
 	while (env.exit)
 	{
 		line = readline("miniopal : ");
-		if (line == NULL) //ctrl + d
+		if (line == NULL)
 			break ;
-		add_history(line);//กดลูกศรขึ้นลงเพื่อดูประวัติ
-		if (!process_line(line, &env))//เอาไปแปรลูกให้ออกมาเป็น linklist ->lexser(แบ่งงตัดออกมาเป็นlink token) + passer(link token มาใส่ type ว่ามันคืออะไร file command บลาๆ) + expander(เอา env ยัด $VAR(envaroment variable)แทนที่ใน token )
+		add_history(line);
+		if (!process_line(line, &env))
 			free(line);
 		env.ret = run_pipe(&env);
 		token_clear(&env.token);
+		init_signal(&env);
 	}
 	end_minishell(&env);
 	return (env.ret);
 }
-
-// char	*make_prompt(t_env *env)
-// {
-// 	char	*cwd;
-// 	char	*home;
-// 	char	*name;
-// 	char	*tmp;
-
-// 	cwd = getcwd(NULL, 0);
-// 	home = getenv("HOME");
-// 	if (home == NULL)
-// 		home = "";
-// 	name = getenv("USER");
-// 	if (name == NULL)
-// 		name = "";
-// 	if (ft_strncmp(cwd, home, ft_strlen(home)) == 0)
-// 	{
-// 		tmp = ft_strjoin("~", cwd + ft_strlen(home));
-// 		free(cwd);
-// 		cwd = tmp;
-// 	}
-// 	name = ft_strjoin_free_n(name, "@minishell: ", 0);
-// 	cwd = ft_strjoin_free_n(name, cwd, 3);
-// 	cwd = ft_strjoin_free_n("\033[30;1;7m\033[1;47m ", cwd, 2);
-// 	cwd = ft_strjoin_free_n(cwd, "\033[0m [", 1);
-// 	cwd = ft_strjoin_free_n(cwd, ft_itoa(env->ret), 3);
-// 	cwd = ft_strjoin_free_n(cwd, "]> \0", 1);
-// 	return (cwd);
-// }

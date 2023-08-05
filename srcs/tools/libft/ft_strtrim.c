@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 12:00:10 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 23:22:57 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:49 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 //    The trimmed string.
 //    NULL if the allocation fails.
 
-#include	"libft.h"
+#include "libft.h"
 
 static int	check_charset(char c, char const *set)
 {

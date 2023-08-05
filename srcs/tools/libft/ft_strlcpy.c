@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:25:37 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 22:10:33 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:03 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 //   means that either size is incorrect or that dst  is  not  a  proper
 //   ''C'' string). The  check  exists  to  prevent  potential  security
 //   problems in incorrect code.
-#include	"libft.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {

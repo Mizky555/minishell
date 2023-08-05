@@ -6,7 +6,7 @@
 /*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:21:49 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/16 23:31:51 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/28 21:05:57 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static char	*expand_token(t_env *env, char *token, char *pos, char **next_pos)
 	else if (ft_strncmp("$?", pos, 2) == 0)
 		expand = expand_error(env, token, pos, next_pos);
 	else if (ft_strncmp("${", pos, 2) == 0)
-		expand = expand_brace(token, pos, next_pos);
+		expand = expand_brace(token, pos, next_pos, env);
 	else
-		expand = expand_var(token, pos, next_pos);
+		expand = expand_var(token, pos, next_pos, env);
 	if (expand == NULL)
 		*next_pos = pos + 1;
 	return (expand);
@@ -97,7 +97,7 @@ static char	*find_next_var(char *token, int *s_open, int *d_open)
 	return (NULL);
 }
 
-int	expand_variable_tokens(t_env *env)//
+int	expand_variable_tokens(t_env *env)
 {
 	t_token	*current;
 	char	*pos;
@@ -110,7 +110,7 @@ int	expand_variable_tokens(t_env *env)//
 	current = env->token;
 	while (current != NULL)
 	{
-		if (is_expandable_variable(current))//เช็คว่ามี $VAR ไหมที่สามารถขยายออกมาได้
+		if (is_expandable_variable(current))
 		{
 			pos = find_next_var(current->token, &single_open, &double_open);
 			while (pos != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 11:46:54 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/13 21:45:36 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:18:42 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 //        The strchrnul() function returns  a  pointer  to  the  matched
 //        character,  or  a  pointer  to  the  null byte at the end of s
 //        (i.e., s+strlen(s)) if the character is not found.
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_strrchr(char *s, int c)
 {

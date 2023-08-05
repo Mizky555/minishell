@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <tliangso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 23:19:08 by tliangso          #+#    #+#             */
-/*   Updated: 2023/07/17 13:09:50 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/26 23:43:09 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int	open_file(t_io *io)
 	}
 	else if (io->type == IO_APPEND)
 		return (open(io->filename,
-		    	O_CREAT | O_WRONLY | O_CLOEXEC | O_APPEND, 0644));
+				O_CREAT | O_WRONLY | O_CLOEXEC | O_APPEND, 0644));
 	else if (io->type == IO_TRUNC)
 		return (open(io->filename,
-		    	O_CREAT | O_WRONLY | O_CLOEXEC | O_TRUNC, 0644));
+				O_CREAT | O_WRONLY | O_CLOEXEC | O_TRUNC, 0644));
 	return (-1);
 }
 

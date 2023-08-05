@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 12:13:19 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/21 20:36:27 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:17:25 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 //    The array of new strings resulting from the split.
 //    NULL if the allocation fails.
 
-#include	"libft.h"
+#include "libft.h"
 
 static int	check_separator(char s, char c)
 {

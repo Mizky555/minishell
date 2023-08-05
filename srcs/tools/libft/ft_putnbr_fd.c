@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:58:11 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/12 22:46:06 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:17:13 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // RETURN VALUE
 // None
-#include	"libft.h"
+#include "libft.h"
 #define INTMIN -2147483648
 #define INTMINSTR "-2147483648"
 

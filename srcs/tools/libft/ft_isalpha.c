@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
+/*   By: thanapornsirirakwongsa <thanapornsirira    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:31:05 by tliangso          #+#    #+#             */
-/*   Updated: 2022/09/10 10:52:58 by tliangso         ###   ########.fr       */
+/*   Updated: 2023/07/27 00:15:01 by thanapornsi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 //        In some locales, there may be additional characters for
 //        which  isalpha()  is true—letters which are neither up‐
 //        percase nor lowercase.
-#include	"libft.h"
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
